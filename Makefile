@@ -1,6 +1,5 @@
 
 run:
-	python getImageInfo.py
-
+	/bin/bash run.sh
 clean:
 	rm *~

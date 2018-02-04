@@ -13,7 +13,10 @@ def index():
     if form.validate_on_submit():
         text = request.form['text']
         filename = secure_filename(form.file.data.filename)
-        # form.file.data.save('uploads/' + filename)
+        form.file.data.save('/Users/Tomeraharoni/Documents/MakeHarvard/info/' + filename)
+        f = open('/Users/Tomeraharoni/Documents/MakeHarvard/info/greetingText.txt','w')
+        f.write(text)
+        f.close()
         print(filename)
         print(text)
         return redirect(url_for('index'))
