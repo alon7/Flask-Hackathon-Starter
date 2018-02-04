@@ -2,7 +2,8 @@ import urllib, base64, json, requests
 #uncomment to handle files stored on the web
 
 ########### Python 2.7 #############
-import httplib, urllib, base64, json, os
+import http.client, base64, json, os
+import urllib.parse
 
 ###############################################
 #### Update or verify the following values. ###
@@ -27,7 +28,7 @@ headers = {
     'Ocp-Apim-Subscription-Key': subscription_key,
 }
 
-params = urllib.urlencode({
+params = urllib.parse.urlencode({
     # Request parameters. All of them are optional.
     'visualFeatures': 'Categories,Description,Color',
     'language': 'en',
@@ -38,7 +39,7 @@ body = "{'url':'https://preview.ibb.co/mN4xqc/love_copy.jpg'}"
 
 try:
     # Execute the REST API call and get the response.
-    conn = httplib.HTTPSConnection('westcentralus.api.cognitive.microsoft.com')
+    conn = http.client.HTTPSConnection('westcentralus.api.cognitive.microsoft.com')
     conn.request("POST", "/vision/v1.0/analyze?%s" % params, body, headers)
     response = conn.getresponse()
     data = response.read()

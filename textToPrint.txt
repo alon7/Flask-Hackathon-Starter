@@ -1,0 +1,4 @@
+hello
+This is {}
+Error:
+'NoneType' object has no attribute 'format'
