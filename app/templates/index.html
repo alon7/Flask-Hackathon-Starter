@@ -6,10 +6,25 @@
 
 {% block content %}
 
-	<h1 class="ui header">{{ title }}</h1>
+	<div id="background">
+		<img src="static/img/background.png" class="stretch" alt="" />
+	</div>
 
-	{% if current_user.is_authenticated %}
-	  	<h2 class="ui header">Hi {{ current_user.name }}!</h2>
-	{% endif %}
+	<div class="container" id="container-body">
+		<div class="row no-gutters">
+			<form method="post" enctype="multipart/form-data">
+				{{ form.hidden_tag() }}
+				<div class="form-group">
+				  <label for="exampleFormControlTextarea1">Enter your greeting</label>
+				  <textarea name="text" class="form-control" id="text" rows="3"></textarea>
+				</div>
+				<div class="bottom row no-gutters">
+					{{ form.file }}
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
+			  </form>
+		</div>
+	</div>
+	
 
 {% endblock %}

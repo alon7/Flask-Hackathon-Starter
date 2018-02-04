@@ -1,5 +1,6 @@
 from flask.ext.wtf import Form
-from wtforms import TextField, PasswordField
+from flask_wtf.file import FileField
+from wtforms import TextField, PasswordField, TextAreaField
 from wtforms.validators import (Required, Length, Email, ValidationError,
                                 EqualTo)
 from app.models import User
@@ -76,3 +77,7 @@ class SignUp(Form):
         EqualTo('confirm', message='Passwords must match.')
     ], description='Password')
     confirm = PasswordField(description='Confirm password')
+
+
+class Create(Form):
+    file = FileField()
